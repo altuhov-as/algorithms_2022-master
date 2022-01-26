@@ -21,6 +21,7 @@
 
 Примечание: ПРОШУ ВАС ВНИМАТЕЛЬНО ЧИТАТЬ ЗАДАНИЕ!
 """
+# Итоговая O(N**2)
 users = [
     {"login" : "mike", "password": '111', "activeted": True},
     {"login" : "nike", "password": '222', "activeted": False},
@@ -29,22 +30,22 @@ users = [
     ]
 
 
-def get_user(user_dict):
-    for k, v in user_dict.items():
-        if k == "activeted":
-            if  not v:
+def get_user(user_dict):    # O(N), за функцию
+    for k, v in user_dict.items():  # O(N), так как "Перебор 	for v in l:"
+        if k == "activeted":        # O(1)
+            if not v:               # O(1)
                 i = int(input("%s пожалуйста активируйте учетную запись (нажмите 1 - для активации)" % user_dict.get("login")))
-                if i  == 1:
-                    print("active")
-                    user_dict["activeted"] = True
+                if i  == 1:         # O(1)
+                    print("active") # O(1)
+                    user_dict["activeted"] = True   # O(1)
                 else:
-                    print("Активация не пройдена")
+                    print("Активация не пройдена")  # O(1)
             else:
-                print("{}, Ваша учетка активирована".format(user_dict.get("login")))
+                print("{}, Ваша учетка активирована".format(user_dict.get("login")))    # O(1)
 
 
-for user_dict in users:
-    get_user(user_dict)
+for user_dict in users: # O(N)
+    get_user(user_dict) # O(N)
 
 print(users)
 
