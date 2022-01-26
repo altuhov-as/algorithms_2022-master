@@ -21,7 +21,6 @@
 
 Примечание: ПРОШУ ВАС ВНИМАТЕЛЬНО ЧИТАТЬ ЗАДАНИЕ!
 """
-# Итоговая O(N**2)
 users = [
     {"login" : "mike", "password": '111', "activeted": True},
     {"login" : "nike", "password": '222', "activeted": False},
@@ -29,23 +28,44 @@ users = [
     {"login" : "olga", "password": '444', "activeted": False}
     ]
 
-
-def get_user(user_dict):    # O(N), за функцию
-    for k, v in user_dict.items():  # O(N), так как "Перебор 	for v in l:"
-        if k == "activeted":        # O(1)
-            if not v:               # O(1)
-                i = int(input("%s пожалуйста активируйте учетную запись (нажмите 1 - для активации)" % user_dict.get("login")))
-                if i  == 1:         # O(1)
-                    print("active") # O(1)
-                    user_dict["activeted"] = True   # O(1)
+# Общая O(N**2)
+def get_user(user_dict):
+    for k, v in user_dict.items(): #O(N)
+        if k == "activeted":       #O(1)
+            if not v:              #O(1)
+                i = int(input("%s пожалуйста активируйте учетную запись (нажмите 1 - для активации)" % user_dict.get("login"))) #O(1)
+                if i == 1:         #O(1)
+                    print("active")
+                    user_dict["activeted"] = True #O(1)
                 else:
-                    print("Активация не пройдена")  # O(1)
+                    print("Активация не пройдена")
             else:
-                print("{}, Ваша учетка активирована".format(user_dict.get("login")))    # O(1)
+                print("{}, Ваша учетка активирована".format(user_dict.get("login"))) #O(1)
 
 
-for user_dict in users: # O(N)
-    get_user(user_dict) # O(N)
+for user_dict in users: #O(N)
+    get_user(user_dict) #O(N)
 
 print(users)
 
+# второй вариант
+
+users_passw = {"mike": '111', "nike": '222', "anna": '333', "olga": '444'}
+users_activ = {"mike": True, "nike": False, "anna": True, "olga": False}
+
+# Общая O(N)
+for k in users_passw.keys():    #O(N)
+    if not users_activ[k]:      #O(1)
+        i = int(input("%s пожалуйста активируйте учетную запись (нажмите 1 - для активации)" % k))
+        if i == 1:
+            print("active")
+            users_activ[k] = True #O(1)
+        else:
+            print("Активация не пройдена")
+    else:
+        print("{}, Ваша учетка активирована".format(k))
+
+
+"""
+Второй вариант предпочтительнее, т.к. нет прохождения по списку
+"""

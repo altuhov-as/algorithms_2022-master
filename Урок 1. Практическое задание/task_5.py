@@ -20,9 +20,10 @@
 класса-стек в самом же классе.
 """
 
+import random
 from array import array
 from unittest import result
-import random
+
 
 class Stack:
     def __init__(self, max_size = 4):
@@ -58,7 +59,6 @@ class Stack:
         array = [str(val) for val in self.__data]
         array.reverse()
         return  '\n'.join(array)
-
 
 number_list = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
 

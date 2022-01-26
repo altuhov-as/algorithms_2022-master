@@ -28,39 +28,34 @@ def by_value(item):
 max_profit = {}                                                             # O(1)
 i = 0                                                                       # O(1)
 for k, v in sorted(profit_company.items(), key=by_value, reverse=True):     # O(n + n log n)
-    if i < 3:                                                               # O(len(i)
+    if i < 3:                                                               # O(1)
         max_profit.setdefault(k, v)                                         # O(1)
     i = i + 1                                                               # O(1)
-print(max_profit)                                                           # O(1)
+print("copy_past", max_profit)                                              # O(1)
 
+# Первый способ:
+def answer_first(dictionary, count=3):
+    sorted_dict = {k: v for k, v in sorted(dictionary.items(), key=lambda item: item[1])}
+    result = {}
+    i = 0
+    while i < count:
+        tmp_lst = list(sorted_dict.popitem())
+        result[tmp_lst[0]] = tmp_lst[1]
+        i += 1
+    return result
 
 
 # Второй способ:
-# Сложность O (n**2)
-
-global max_value                                                            # O(1)
-global key_max_value                                                        # O(1)
-
-max_profit_2 = {}                                                           # O(1)
-while len(max_profit_2) < 3:                                                # O(n)
-    max_value = 0                                                           # O(1)
-    for key, value in profit_company.items():                               # O(n)
-        if max_value < value:                                               # O(len(max_value))
-            max_value = value                                               # O(1)
-            key_max_value = key                                             # O(1)
-    max_value = profit_company.pop(key_max_value)                           # O(1)
-    max_profit_2.setdefault(key_max_value, max_value)                       # O(1)
-
-print(max_profit_2)
+def answer_two(company):
+    sorted_values = sorted(company.values(), reverse=True) # Sort the values
+    sorted_dict = {}
+    for i in range(3):
+        for k in company.keys():
+            if company[k] == sorted_values[i]:
+                sorted_dict[k] = company[k]
+                break
+    return sorted_dict
 
 
-count = 3
-max_val = []
-for k, v in profit_company.items():
-    max_val.append(v)
-max_val.sort()
-max_val = max_val[len(max_val) - count:]
-max_val.reverse()
-print("max_val", max_val)
-for item in max_val:
-    print(profit_company.get(item))
+print("answer_first", answer_first(profit_company))
+print("answer_two", answer_two(profit_company))
