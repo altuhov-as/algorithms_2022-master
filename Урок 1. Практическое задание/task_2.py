@@ -21,7 +21,7 @@
 def first_min(lst):        
     result = lst[0]         # O(1)
     for i in lst:           # O(n)
-        if i < result:      # O(len(i)
+        if i < result:      # O(1)
             result = i      # O(1)
     return result           # O(1)
 
