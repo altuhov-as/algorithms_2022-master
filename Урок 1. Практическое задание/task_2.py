@@ -31,7 +31,7 @@ def second_min(lst):
     result = lst[0]                     # O(1)
     for i in range(len(lst) - 1):       # O(n)
         for j in range(i+1, len(lst)):  # O(n)
-            if j < result:              # O(len(i)
+            if j < result:              # O(1)
                 result = lst[j]              # O(1)
     return result                       # O(1)
 
