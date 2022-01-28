@@ -27,7 +27,7 @@ def by_value(item):
 
 max_profit = {}                                                             # O(1)
 i = 0                                                                       # O(1)
-for k, v in sorted(profit_company.items(), key=by_value, reverse=True):     # O(n + n log n)
+for k, v in sorted(profit_company.items(), key=by_value, reverse=True):     # O(n + n log n) или # O(n + n log n)
     if i < 3:                                                               # O(1)
         max_profit.setdefault(k, v)                                         # O(1)
     i = i + 1                                                               # O(1)
@@ -35,7 +35,13 @@ print("copy_past", max_profit)                                              # O(
 
 # Первый способ:
 def answer_first(dictionary, count=3):
-    sorted_dict = {k: v for k, v in sorted(dictionary.items(), key=lambda item: item[1])}
+    sorted_dict = {k: v for k, v in sorted(dictionary.items(), key=lambda item: item[1])} # O(1 + n + n log n)
+    """
+    создание словаря  - О(1)
+    Перебор элементов 	for k in d: 	O(N) 	Для всех типов: keys, values, items. В худшем случае, без прерывания цикла
+    sorted - n log n
+    lambda - O(1)
+    """
     result = {}
     i = 0
     while i < count:
@@ -47,15 +53,19 @@ def answer_first(dictionary, count=3):
 
 # Второй способ:
 def answer_two(company):
-    sorted_values = sorted(company.values(), reverse=True) # Sort the values
-    sorted_dict = {}
-    for i in range(3):
-        for k in company.keys():
-            if company[k] == sorted_values[i]:
-                sorted_dict[k] = company[k]
+    sorted_values = sorted(company.values(), reverse=True)  # O(n log n)
+    sorted_dict = {}                                        # O(1)
+    for i in range(3):                                      # O(1)
+        for k in company.keys():                            # O(n)
+            if company[k] == sorted_values[i]:              # O(1)
+                sorted_dict[k] = company[k]                 # O(1)
                 break
     return sorted_dict
 
 
 print("answer_first", answer_first(profit_company))
 print("answer_two", answer_two(profit_company))
+
+"""
+Второй вариант предпочтительнее
+"""
