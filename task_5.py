@@ -19,28 +19,20 @@
 
 Допускается исп-е встроенных ф-ций
 """
-
-
-def print_ascii(s : int, f: int, line: str, n=0):
-	global lines
-	if s == f:
-		return lines
-	else:
-		s += 1
-		n += 1
-		if n == 10:
-			lines += f'{s} - {chr(s)}'
-			lines += '\n'
-			print_ascii(s, f, lines, 0)
-		else:
-			lines += f'{s} - {chr(s)} '
-			print_ascii(s, f, lines, n)
-
-
 first = 32
 last = 127
-lines = ''
 
-print_ascii(first -1, last, lines)
 
-print(lines)
+def get_ascii(s, f, count_in_row=0, result=''):
+	if s == f + 1:
+		return result
+	result += f'{s} - {chr(s)}'
+	s += 1
+	count_in_row += 1
+	if count_in_row == 10:
+		result += '\n'
+		count_in_row = 0
+	return get_ascii(s, f, count_in_row, result)
+
+
+print(get_ascii(first, last))
