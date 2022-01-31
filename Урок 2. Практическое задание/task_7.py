@@ -27,3 +27,4 @@ def formula(n):
 
 number = 6
 print(control_sum(number) == formula(number))
+
