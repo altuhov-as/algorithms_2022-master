@@ -36,3 +36,4 @@ def get_ascii(s, f, count_in_row=0, result=''):
 
 
 print(get_ascii(first, last))
+
