@@ -24,5 +24,5 @@ def formula(n):
 	return n*((n+1)/2)
 
 
-n = 6
-print(control_sum(n) == formula(n))
+number = 6
+print(control_sum(number) == formula(number))
