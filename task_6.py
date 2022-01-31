@@ -10,12 +10,12 @@
 
 import random
 
-secret = random.randint(0, 100)
-print(secret)
+answer = random.randint(0, 100)
+
 
 def get_answer(secret, current_step=1, count_step=10):
 	if current_step == count_step:
-		print f'Не угадано! Загаданное число {secret}'
+		print(f'Не угадано! Загаданное число {secret}')
 	else:
 		print(f'Попытка №{current_step:2} из {count_step}')
 		user_number = int(input('Введите число от 1 до 100: '))
@@ -30,4 +30,4 @@ def get_answer(secret, current_step=1, count_step=10):
 		get_answer(secret, current_step)
 
 
-get_answer(secret)
+get_answer(answer)
