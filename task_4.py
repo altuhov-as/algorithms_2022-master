@@ -16,9 +16,9 @@ def sum_row(n, result=0):
 	if n == 0:
 		return result + 1
 	result += 1/((-2)**n)
-	return sum_row2(n, result)
+	return sum_row(n, result)
 
 count = int( input("Введите количество элементов: "))
 
-print(f"Количество элементов - {count}, их сумма - {sum_row2(count)}")
+print(f"Количество элементов - {count}, их сумма - {sum_row(count)}")
 
