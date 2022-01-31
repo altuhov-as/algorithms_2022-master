@@ -22,3 +22,4 @@ def sum_row(n, result=0):
 
 count = int(input("Введите количество элементов: "))
 print(f"Количество элементов - {count}, их сумма - {sum_row(count)}")
+
