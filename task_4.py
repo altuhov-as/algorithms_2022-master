@@ -11,14 +11,14 @@
 Нужно обойтисть без создания массива!
 """
 
+
 def sum_row(n, result=0):
-	n -=1
+	n -= 1
 	if n == 0:
 		return result + 1
 	result += 1/((-2)**n)
 	return sum_row(n, result)
 
-count = int( input("Введите количество элементов: "))
 
+count = int(input("Введите количество элементов: "))
 print(f"Количество элементов - {count}, их сумма - {sum_row(count)}")
-
