@@ -31,3 +31,4 @@ def get_answer(secret, current_step=1, count_step=10):
 
 
 get_answer(answer)
+
