@@ -44,22 +44,22 @@ my_dict = {}
 @time_of_function
 def list_app(i=1):
     for i in range(i):
-        my_list.append(random.choice(range(1000, 10000000000)))
+        my_list.append(random.choice(range(1000, 10000000000))) #O(1)
     for i in range(i//1000):
-        my_list[i] += 1
+        my_list[i] += 1                                         #O(1)
     for i in range(i//1000):
-        my_list.pop()
+        my_list.pop()                                           #O(1)
     return my_list
 
 
 @time_of_function
 def dict_app(i=1):
     for i in range(i):
-        my_dict[i] = (random.choice(range(1000, 10000000000)))
+        my_dict[i] = (random.choice(range(1000, 10000000000)))  #O(1)
     for i in range(i//1000):
-        my_dict[i] = 1
+        my_dict[i] = 1                                          #O(1)
     for i in range(i//1000):
-        my_dict.popitem()
+        my_dict.popitem()                                       #O(1)
     return my_dict
 
 
